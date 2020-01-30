@@ -2,7 +2,10 @@
 // Se è <= 5 il quadrato diventa giallo,
 // se è > di 5 il quadrato diventa verde.
 // Il numero ottenuto appare al centro del quadrato.
-
+var line = $('.line');
+for (var i = 0; i < line.length; i++) {
+  line.append("<div class='box check'></div>");
+}
 
 $('.check').click(function(){
   var element = $(this);
@@ -18,8 +21,6 @@ $('.check').click(function(){
         element.addClass('green');
       }
       element.html('<p>'+numero+'<p>');
-      console.log(numero);
-
       },
     error: function (richiesta, stato, errori) {
       alert("E' avvenuto un errore. " + errori);
