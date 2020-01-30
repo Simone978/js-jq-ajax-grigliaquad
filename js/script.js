@@ -1,14 +1,29 @@
+// Griglia 6x6, ad ogni click sul quadrato parte una richiesta AJAX che prende un numero random da 1 a 9.
+// Se è <= 5 il quadrato diventa giallo,
+// se è > di 5 il quadrato diventa verde.
+// Il numero ottenuto appare al centro del quadrato.
 
-
-
-// console.log(numero);
 
 $('.check').click(function(){
-  var numero = Math.floor(Math.random() * (10 - 0 + 1) ) + 0;
-  if(numero <= 5){
-    $(this).addClass('yellow');
-  }else{
-    $(this).addClass('green');
-  }
-  $('.center p').text(numero);
+  var element = $(this);
+  $.ajax(
+    {
+    url: "https://flynn.boolean.careers/exercises/api/random/int",
+    method: "GET",
+    success: function (data) {
+      var numero = data.response;
+      if(numero <= 5){
+        element.addClass('yellow');
+      }else{
+        element.addClass('green');
+      }
+      element.html('<p>'+numero+'<p>');
+      console.log(numero);
+
+      },
+    error: function (richiesta, stato, errori) {
+      alert("E' avvenuto un errore. " + errori);
+      }
+    }
+  );
 });

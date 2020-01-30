@@ -5,8 +5,8 @@
 }
 
 .wrapper {
-  width: 300px;
-  margin: auto;
+  width: 50%;
+  margin: 50px auto;
 }
 .line{
   display: flex;
@@ -17,7 +17,7 @@
   border: 1px solid grey;
 }
 
-.center p{
+.box p{
   text-align: center;
   margin-top: 50px;
 }
